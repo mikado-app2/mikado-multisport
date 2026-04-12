@@ -1,4 +1,4 @@
-const API_KEY = "TA_CLE_API";
+const API_KEY = "d0fd0e9a4a97976590d9934778e41b63";
 const BASE_URL = "https://v3.football.api-sports.io";
 
 async function apiGet(endpoint) {
