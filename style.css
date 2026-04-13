@@ -226,15 +226,16 @@ body {
 .sport-icon {
     width: 80px;
     height: 80px;
-    border-radius: 50%;
-    border: 2px solid var(--gold-dim);
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 14px;
-    font-size: 40px;
-    background: radial-gradient(circle at 30% 30%, var(--surface2), var(--bg));
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-size: 64px;
+    transition: transform 0.2s ease;
+}
+
+.sport-card:hover .sport-icon {
+    transform: scale(1.12);
 }
 
 .sport-card:hover .sport-icon {
