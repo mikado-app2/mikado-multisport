@@ -264,3 +264,80 @@ async function loadMatchDetails() {
         </div>
     `;
         }
+
+
+/* ============================
+   5. TENNIS
+============================ */
+async function loadTennisMatches() {
+    const container = document.getElementById("match-list");
+    container.innerHTML = "Chargement...";
+
+    const today = new Date().toISOString().split("T")[0];
+    const response = await fetch(`${TENNIS_URL}?method=get_fixtures&APIkey=${TENNIS_API_KEY}&date_start=${today}&date_stop=${today}`);
+    const data = await response.json();
+    const matches = data.result;
+
+    container.innerHTML = "";
+
+    if (!matches || matches.length === 0) {
+        container.innerHTML = "<p style='color:var(--muted);text-align:center;padding:30px'>Aucun match aujourd'hui</p>";
+        return;
+    }
+
+    // Grouper par tournoi
+    const tournois = {};
+    matches.forEach(match => {
+        const key = match.league_name || "Autre";
+        if (!tournois[key]) {
+            tournois[key] = { type: match.country_name || "", matches: [] };
+        }
+        tournois[key].matches.push(match);
+    });
+
+    Object.entries(tournois).forEach(([tournoisName, tournoi]) => {
+        const header = document.createElement("div");
+        header.className = "league-header";
+        header.innerHTML = `
+            <span>🎾</span>
+            <span>${tournoisName}</span>
+            ${tournoi.type ? `<span class="league-country">${tournoi.type}</span>` : ""}
+        `;
+        container.appendChild(header);
+
+        tournoi.matches.forEach(match => {
+            const div = document.createElement("div");
+            div.className = "match-card";
+
+            const isLive = match.event_live === "1";
+            const isFinished = match.event_status === "Finished";
+            const score = match.event_final_result || "";
+
+            let center;
+            if (isLive) {
+                center = `<div class="match-vs" style="color:var(--live-red)">${match.event_game_result || "●"}</div>
+                          <div class="match-time" style="color:var(--live-red)">EN DIRECT</div>`;
+            } else if (isFinished && score) {
+                center = `<div class="match-vs">${score}</div>
+                          <div class="match-time">Terminé</div>`;
+            } else {
+                center = `<div class="match-vs">vs</div>
+                          <div class="match-time">${match.event_time || ""}</div>`;
+            }
+
+            div.innerHTML = `
+                <div class="match-teams-row">
+                    <div class="team-block" style="flex-direction:column; align-items:flex-start; gap:2px;">
+                        <div class="team-name">${match.event_first_player}</div>
+                    </div>
+                    <div class="match-center">${center}</div>
+                    <div class="team-block" style="flex-direction:column; align-items:flex-end; gap:2px; justify-content:flex-end;">
+                        <div class="team-name" style="text-align:right;">${match.event_second_player}</div>
+                    </div>
+                </div>
+            `;
+
+            container.appendChild(div);
+        });
+    });
+}
