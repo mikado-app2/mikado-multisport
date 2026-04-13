@@ -80,4 +80,197 @@ body {
 .page-title {
     font-size: 18px;
     font-weight: 600;
+    margin: 8px 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.page-title span.icon {
+    color: #d4af37;
+}
+
+/* --------- Cartes de matchs --------- */
+.match-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.match-card {
+    background: radial-gradient(circle at top left, #151515, #050509);
+    border-radius: 14px;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, border-color 0.12s;
+}
+
+.match-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 26px rgba(0, 0, 0, 0.9);
+    border-color: #d4af37;
+}
+
+/* Ligne ligue + logo */
+.match-league-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #c0c0c0;
+}
+
+.match-league {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.match-league-logo {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    object-fit: contain;
+    background: #111;
+}
+
+/* Ligne équipes */
+.match-teams-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.team-block {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.team-logo {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: contain;
+    background: #111;
+    border: 1px solid #333;
+}
+
+.team-name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Centre “vs” + heure */
+.match-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+}
+
+.match-vs {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #c0c0c0;
+}
+
+.match-time {
+    font-size: 12px;
+    margin-top: 2px;
+    color: #f5f5f5;
+}
+
+/* Flèche */
+.match-arrow {
+    font-size: 14px;
+    color: #d4af37;
+}
+
+/* --------- Détails du match --------- */
+.match-details-header {
+    margin-top: 16px;
+    background: radial-gradient(circle at top, #151515, #050509);
+    border-radius: 16px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    padding: 14px 12px;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.match-details-league {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #c0c0c0;
+}
+
+.match-details-league img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: contain;
+    background: #111;
+}
+
+.match-details-teams {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.match-details-team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+}
+
+.match-details-team img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: contain;
+    background: #111;
+    border: 1px solid #333;
+}
+
+.match-details-team-name {
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.match-details-vs {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #d4af37;
+}
+
+/* Infos match */
+.match-details-info {
+    font-size: 12px;
+    color: #c0c0c0;
+    margin-top: 4px;
+}
+
+/* --------- Utilitaires --------- */
+.text-muted {
+    color: #9a9a9a;
+    font-size: 11px;
+    margin-top: 6px;
 }
