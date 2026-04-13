@@ -9,6 +9,9 @@ const URLS = {
     hockey:     "https://v1.hockey.api-sports.io"
 };
 
+const TENNIS_API_KEY = "9a6aa2d0fad0003ae55811311d1b2fba7cd20b8bdfb93604b7c9a99bdbb33ef1";
+const TENNIS_URL = "https://api.api-tennis.com/tennis/";
+
 /* ============================
    LIGUES PRIORITAIRES FOOTBALL
 ============================ */
